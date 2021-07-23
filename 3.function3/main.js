@@ -1,14 +1,23 @@
 function alphabetsort(message){
   x = message.length;
-  for(i=0;i<(x/2);i++){
-   t = message.charAt(i) == message.charAt(x-i-1);
-   document.write(t);
-   if(!t){
-   	return false;
-    }
-    return true;
+  t = [];
+  for(i = 0;i<x;i++){   //convert string to array
+    t[i] = message.charAt(i);
   }
-  
+  for(i = 0;i<x;i++){
+     for(j = i+1;j<x;j++){
+     		if(t[i]<t[j]){
+        	tmp = t[i];
+          t[i] = t[j];
+          t[j] = tmp; 
+        }
+     }
+  }
+  sorted = '';
+  for(i = 0;i<x;i++){   //array to string
+    sorted = sorted.concat(t[i]);
+  }
+  return sorted;
 }
-palindrome('hello'); // should return false
-palindrome('abcba'); // should return true
+
+alphabetsort('Hello');
